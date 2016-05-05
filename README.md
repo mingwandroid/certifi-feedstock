@@ -5,7 +5,7 @@ Home: http://certifi.io/
 
 Package license: ISC
 
-Feedstock license: BSD
+Feedstock license: BSD 3-Clause
 
 Summary: Python package for providing Mozilla's CA Bundle.
 
