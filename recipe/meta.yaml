@@ -8,15 +8,23 @@ source:
   fn: certifi-{{ version }}.tar.gz
   url: https://pypi.python.org/packages/source/c/certifi/certifi-{{ version }}.tar.gz
   sha256: 5e8eccf95924658c97b990b50552addb64f55e1e3dfe4880456ac1f287dc79d0
+  patches:
+    # Uses `distutils` if `setuptools` is not found.
+    # This will allow it to be a dependency of `setuptools`.
+    # Has already been accepted upstream, but is not yet released.
+    # The relevant PR is linked below.
+    #
+    # https://github.com/certifi/python-certifi/pull/43
+    #
+    - python-certifi_PR_43.diff
 
 build:
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  number: 1
+  script: python setup.py install
 
 requirements:
   build:
     - python
-    - setuptools
   run:
     - python
 
